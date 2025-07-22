@@ -26,7 +26,7 @@ class Basket(BaseModel):
 # FastAPI Router
 router = APIRouter(
     prefix="/scoring",
-    tags=["scoring", "recommendations"],
+    tags=["scoring"],
     responses={404: {"description": "Basket not found"}},
 )
 
@@ -37,12 +37,7 @@ async def get_recommendation_score(
     include_items: bool = Query(True, description="Include recommended item list"),
     model_type: str = Query("collaborative", description="Recommendation model type")
 ) -> RecommendationScore:
-    """
-    Get AI-powered recommendation scores for a basket.
-    
-    Returns user affinity, purchase probability, and recommended items
-    based on historical data and machine learning models.
-    """
+
     
     # Mock recommendation logic (in real app, this would call ML models)
     random.seed(basket_id)  # Consistent results for same basket_id
